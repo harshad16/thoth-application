@@ -1,0 +1,24 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: cli-examples
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: cli-example
+          image: cli-examples
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "1"
+            limits:
+              memory: "500Mi"
+              cpu: "2"
+  test: false
